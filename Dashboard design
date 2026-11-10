@@ -1,0 +1,46 @@
+import matplotlib.pyplot as plt
+
+# Sample Sales Data
+months = ["January", "February", "March"]
+sales = [39000, 45000, 52500]
+profit = [9400, 11100, 13000]
+orders = [78, 90, 105]
+
+# Calculate KPIs
+total_sales = sum(sales)
+total_profit = sum(profit)
+total_orders = sum(orders)
+growth = ((sales[-1] - sales[0]) / sales[0]) * 100
+
+# Display Summary
+print("===== SALES DASHBOARD =====")
+print("Total Sales: Rs.", total_sales)
+print("Total Profit: Rs.", total_profit)
+print("Total Orders:", total_orders)
+print("Sales Growth:", round(growth, 2), "%")
+
+# Create Dashboard
+fig, ax = plt.subplots(1, 2, figsize=(12, 5))
+
+# Monthly Sales Chart
+ax[0].bar(months, sales)
+ax[0].set_title("Monthly Sales Analysis")
+ax[0].set_ylabel("Sales (Rs.)")
+ax[0].tick_params(axis='x', rotation=15)
+
+# Profit Trend Chart
+ax[1].plot(months, profit, marker='o')
+ax[1].set_title("Monthly Profit Analysis")
+ax[1].set_ylabel("Profit (Rs.)")
+ax[1].grid(True)
+
+# Dashboard Title
+fig.suptitle("BUSINESS SALES DASHBOARD",
+             fontsize=16, fontweight='bold')
+
+plt.tight_layout()
+plt.savefig("task4_dashboard.png")
+plt.show()
+
+print("\nDashboard created successfully!")
+print("Image saved as task4_dashboard.png")
